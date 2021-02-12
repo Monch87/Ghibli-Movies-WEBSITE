@@ -13,7 +13,10 @@ const userSchema = new Schema({
     type: String,
     required: true,
   },
-  avatar:{   ///pendiente por aclarar
+  avatar:{  
+    name: String,
+    path: String,
+    originalName: String,  ///pendiente por aclarar
   },
   watchmovies:{
    type:[String]

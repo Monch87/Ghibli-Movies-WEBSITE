@@ -1,7 +1,4 @@
-body {
-  padding: 50px;
-  font-family: sans-serif;
-}
+@import "loader-style.scss";
 
 h1,
 h2,
@@ -15,6 +12,7 @@ h3 {
 
 #map {
   height: 400px;
+  background-color: gray;
 }
 
 .error-message {

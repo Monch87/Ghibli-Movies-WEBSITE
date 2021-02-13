@@ -23,17 +23,16 @@ function initMap() {
 
   service.textSearch(request, function (results, status) {
     if (status === google.maps.places.PlacesServiceStatus.OK) {
-      console.log(results);
+      //console.log(results);
       for (var i = 0; i < results.length; i++) {
-        console.log(results[i].name);
-
+        //console.log(results[i].name);
+        getUserPosition(map);
         createMarker(
           results[i].geometry.location.lat(),
           results[i].geometry.location.lng(),
           results[i].name
         );
       }
-      //map.setCenter(results[0].geometry.location);
     }
   });
 }
@@ -41,4 +40,16 @@ function initMap() {
 function createMarker(lat, lng, title) {
   const position = { lat, lng };
   new google.maps.Marker({ position, map, title });
+}
+
+function getUserPosition(map) {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition((position) => {
+      const center = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude
+      };
+      map.setCenter(center);
+    });
+  }
 }

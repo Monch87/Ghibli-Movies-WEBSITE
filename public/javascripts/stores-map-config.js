@@ -39,7 +39,18 @@ function searchPlaces(center, map) {
     if (status === google.maps.places.PlacesServiceStatus.OK) {
       console.log(results);
       for (let i = 0; i < results.length; i++) {
-        console.log(results[i].name);
+        const photoURL =
+          results[i].photos && results[i].photos[0]
+            ? results[i].photos[0].getUrl({ maxHeight: 200 })
+            : "https://www.google.com/imgres?imgurl=https%3A%2F%2Fi.pinimg.com%2Foriginals%2Fa4%2Ffa%2F8c%2Fa4fa8c0588f96c91989308c2448b095a.png&imgrefurl=https%3A%2F%2Fwww.pinterest.com%2Fpin%2F713468765939454472%2F&tbnid=0NuuwjiOluDRdM&vet=12ahUKEwjTpfuKvOfuAhXOwIUKHepbC9YQMygAegUIARCdAQ..i&docid=mMRJA9sh97_8WM&w=800&h=600&q=totoro%20icon&hl=es&ved=2ahUKEwjTpfuKvOfuAhXOwIUKHepbC9YQMygAegUIARCdAQ";
+
+        displayDetails(
+          results[i].name,
+          results[i].formatted_address,
+          results[i].place_id,
+          photoURL
+        );
+
         createMarker(
           results[i].geometry.location.lat(),
           results[i].geometry.location.lng(),
@@ -49,4 +60,23 @@ function searchPlaces(center, map) {
       }
     }
   });
+}
+
+function displayDetails(name, address, place_id, photoURL) {
+  const resultHMTL = `<a href="https://www.google.com/maps/place/?q=place_id:${place_id}" target="_blank" rel="noopener noreferrer">
+
+  <div class="row">
+  <div class="col-4 my-auto store-img">
+    <img src="${photoURL}" alt="">
+  </div>
+  <div class="col-8">
+      <p>${name}</p>
+      <p>${address}</p>
+  </div>
+</div>
+  
+  </a>
+  
+<hr>`;
+  document.querySelector(".search-results").innerHTML += resultHMTL;
 }

@@ -10,10 +10,8 @@ h3 {
 .navbar {
   margin-bottom: 50px; }
 
-#map,
-#coffee-shops-map {
-  height: 400px;
-  background-color: red; }
+#map {
+  height: 400px; }
 
 .error-message {
   background-color: #ff9595;

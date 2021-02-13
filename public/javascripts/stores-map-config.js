@@ -41,8 +41,8 @@ function searchPlaces(center, map) {
       for (let i = 0; i < results.length; i++) {
         const photoURL =
           results[i].photos && results[i].photos[0]
-            ? results[i].photos[0].getUrl({ maxHeight: 200 })
-            : "https://www.google.com/imgres?imgurl=https%3A%2F%2Fi.pinimg.com%2Foriginals%2Fa4%2Ffa%2F8c%2Fa4fa8c0588f96c91989308c2448b095a.png&imgrefurl=https%3A%2F%2Fwww.pinterest.com%2Fpin%2F713468765939454472%2F&tbnid=0NuuwjiOluDRdM&vet=12ahUKEwjTpfuKvOfuAhXOwIUKHepbC9YQMygAegUIARCdAQ..i&docid=mMRJA9sh97_8WM&w=800&h=600&q=totoro%20icon&hl=es&ved=2ahUKEwjTpfuKvOfuAhXOwIUKHepbC9YQMygAegUIARCdAQ";
+            ? results[i].photos[0].getUrl({ maxHeight: 100 })
+            : "https://i.pinimg.com/originals/a4/fa/8c/a4fa8c0588f96c91989308c2448b095a.png";
 
         displayDetails(
           results[i].name,

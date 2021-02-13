@@ -55,10 +55,10 @@ router.post(
   })
 );
 
-// // User logout
-// router.get("/cerrar-sesion", (req, res) => {
-//     req.logout();
-//     res.redirect("/iniciar-sesion");
-// });
+// User logout
+router.get("/logout", (req, res) => {
+  req.logout();
+  res.redirect("/");
+});
 
 module.exports = router;

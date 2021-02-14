@@ -66,10 +66,10 @@ function displayDetails(name, address, place_id, photoURL) {
   const resultHMTL = `<a href="https://www.google.com/maps/place/?q=place_id:${place_id}" target="_blank" rel="noopener noreferrer">
 
   <div class="row">
-  <div class="col-4 my-auto store-img">
+  <div class="col-4 col-md-12 col-lg-4 my-auto store-img">
     <img src="${photoURL}" alt="">
   </div>
-  <div class="col-8">
+  <div class="col-8 col-md-12 col-lg-8">
       <p>${name}</p>
       <p>${address}</p>
   </div>

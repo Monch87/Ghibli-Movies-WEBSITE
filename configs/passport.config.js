@@ -9,7 +9,7 @@ const User = require("./../models/user.model");
 module.exports = (app) => {
   app.use(
     session({
-      secret: "passport-ghibli",
+      secret: process.env.PASSPORT_SECRET,
       resave: true,
       saveUninitialized: true
     })

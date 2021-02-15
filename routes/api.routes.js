@@ -1,14 +1,21 @@
-const express = require('express')
-const router = express.Router()
+const express = require("express");
+const axios = require("axios");
+const router = express.Router();
+const { matchFilm } = require("../utils");
 
-const Place = require('./../models/place.model')
+router.get("/", (req, res) => {
+  //res.send(req.query);
+  axios
+    .get("https://ghibliapi.herokuapp.com/films/")
+    .then((response) => {
+      res.send(response.data);
+      const filmsTitle = response.data.map((movie) => {
+        movie.title;
+      });
+      //bb = matchFilm(filmsTitle, req.query.title);
+      //res.send(bb);
+    })
+    .catch((err) => console.log(err));
+});
 
-router.get('/places', (req, res) => {
-
-Place
-    .find()
-    .then(response => res.json(response))
-    .catch(err => console.log(err))
-})
-
-module.exports = router
+module.exports = router;

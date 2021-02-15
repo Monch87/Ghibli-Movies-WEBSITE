@@ -11,17 +11,19 @@ It also provides all users with a profile page to classify Ghibli movies as pend
 
 ## Endpoints table
 
-| Id  | Method | Path               | Description                                                            |
-| --- | ------ | ------------------ | ---------------------------------------------------------------------- |
-| 1   | get    | /                  | Renders homepage                                                       |
-| 2   | post   | /search            | Searches for movie                                                     |
-| 3   | get    | /search/movie/:id  | Renders searched movie details                                         |
-| 4   | get    | /login             | Renders login form                                                     |
-| 5   | post   | /login             | Validates user login info                                              |
-| 6   | get    | /signup            | Renders signup form                                                    |
-| 7   | post   | /signup            | Validates user signup info                                             |
-| 8   | post   | /logout            | Logs user out                                                          |
-| 9   | get    | /stores            | Renders nearby stores view                                             |
-| 11  | get    | /profile           | Renders user profile                                                   |
-| 12  | get    | /profile/movie/:id | Renders user's rating and comments for a movie as well as editing form |
-| 13  | post   | /profile/movie/:id | Updates user's rating and comments for a movie                         |
+| Id  | Method | Path                                        | Description                                                            |
+| --- | ------ | ------------------------------------------- | ---------------------------------------------------------------------- |
+| 1   | get    | /                                           | Renders homepage                                                       |
+| 2   | post   | /search                                     | Searches for movie                                                     |
+| 3   | get    | /search/movie/:id                           | Renders searched movie details                                         |
+| 4   | get    | /login                                      | Renders login form                                                     |
+| 5   | post   | /login                                      | Validates user login info                                              |
+| 6   | get    | /signup                                     | Renders signup form                                                    |
+| 7   | post   | /signup                                     | Validates user signup info                                             |
+| 8   | post   | /logout                                     | Logs user out                                                          |
+| 9   | get    | /stores                                     | Renders nearby stores view                                             |
+| 11  | get    | /profile                                    | Renders user profile                                                   |
+| 12  | get    | /profile/movie/:id                          | Renders user's rating and comments for a movie as well as editing form |
+| 13  | post   | /profile/movie/:id                          | Updates user's rating and comments for a movie                         |
+| 14  | get    | <https://ghibliapi.herokuapp.com/films>     | Get all movies from Studio Ghibli API                                  |
+| 15  | get    | <https://ghibliapi.herokuapp.com/films/:id> | Get movie with specified ID from Studio Ghibli API                     |

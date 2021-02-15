@@ -3,17 +3,16 @@ const axios = require("axios");
 const router = express.Router();
 const { matchFilm } = require("../utils");
 
-router.get("/", (req, res) => {
-  //res.send(req.query);
+router.get("/search", (req, res) => {
   axios
     .get("https://ghibliapi.herokuapp.com/films/")
     .then((response) => {
-      res.send(response.data);
-      const filmsTitle = response.data.map((movie) => {
-        movie.title;
+      const titleArray = [];
+      response.data.forEach((movie) => {
+        const movieData = { id: movie.id, title: movie.title };
+        titleArray.push(movieData);
       });
-      //bb = matchFilm(filmsTitle, req.query.title);
-      //res.send(bb);
+      res.send(matchFilm(titleArray, req.query.title));
     })
     .catch((err) => console.log(err));
 });

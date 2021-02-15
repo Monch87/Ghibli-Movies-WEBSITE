@@ -15,7 +15,7 @@ new autoComplete({
   },
   resultsList: {
     container: (source) => {
-      source.setAttribute("id", "title");
+      source.setAttribute("id", "movies-search-results");
     },
     destination: "#autoComplete",
     position: "afterend",
@@ -27,8 +27,15 @@ new autoComplete({
     },
     element: "li"
   },
+  sort: (a, b) => {
+    if (a.match < b.match) return -1;
+    if (a.match > b.match) return 1;
+    return 0;
+  },
   threshold: 3,
   debounce: 300,
   searchEngine: "strict",
-  onSelection: (feedback) => console.log(feedback)
+  onSelection: (result) => {
+    console.log(result.selection.value.id);
+  }
 });

@@ -4,11 +4,11 @@
 
         <div class="col-md-6">
 
-            <h2>Celebrities's edit Page</h2>
+            <h2>Edit Page</h2>
 
             <hr>
 
-            <form method="POST" action="/users/{{id}}/edit">
+            <form method="POST" action="/user/{{user.id}}/edit">
 
                 <div class="form-group">
                     <label for="username">UserName</label>
@@ -27,7 +27,7 @@
 
 
                 <button type="submit" class="btn btn-dark">Save Edit</button>
-                <a class="btn btn-dark" href="/admin">Back to your profile</a>
+                <a class="btn btn-dark" href="/profile">Back to your profile</a>
             </form>
 
         </div>

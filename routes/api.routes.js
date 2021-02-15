@@ -3,9 +3,9 @@ const axios = require("axios");
 const router = express.Router();
 const { matchFilm } = require("../utils");
 
-router.get("/search", (req, res) => {
+router.get("/search", (req, res, next) => {
   axios
-    .get("https://ghibliapi.herokuapp.com/films/")
+    .get("https://ghibliapi.herokuapp.com/films")
     .then((response) => {
       const titleArray = [];
       response.data.forEach((movie) => {
@@ -14,7 +14,7 @@ router.get("/search", (req, res) => {
       });
       res.send(matchFilm(titleArray, req.query.title));
     })
-    .catch((err) => console.log(err));
+    .catch((err) => next(err));
 });
 
 module.exports = router;

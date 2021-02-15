@@ -7,12 +7,8 @@ router.get("/search", (req, res, next) => {
   axios
     .get("https://ghibliapi.herokuapp.com/films")
     .then((response) => {
-      const titleArray = [];
-      response.data.forEach((movie) => {
-        const movieData = { id: movie.id, title: movie.title };
-        titleArray.push(movieData);
-      });
-      res.send(matchFilm(titleArray, req.query.title));
+      const titleArray = response.data.map(({ id, title }) => ({ id, title }));
+      res.json(matchFilm(titleArray, req.query.title));
     })
     .catch((err) => next(err));
 });

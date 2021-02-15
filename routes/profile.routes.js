@@ -5,20 +5,7 @@ const passport = require("passport");
 const User = require("../models/user.model");
 
 
-
-// User profile
-// router.get('/login', (req, res) => {
-//     User
-//         .find()
-//         .then(users => {
-//             res.render('profile', { users })
-//         })
-//         .catch(err => console.log(err))
-// })
-
-
-
-// User profile and edit
+// User profile 
 router.get('/login', (req, res) => {
 
     const user_id = req.params.user_id
@@ -29,14 +16,24 @@ router.get('/login', (req, res) => {
         .catch(err => console.log(err))
 })
 
-router.post('profile', (req, res) => {
+//edit
+router.get('/user/:user_id/edit', (req, res) => {
 
-    const { username, name, profileImg, description } = req.body
     const user_id = req.params.user_id
 
     User
-        .findByIdAndUpdate(user_id, { username, name, profileImg, description })
-        .then(user => res.redirect(`/all-users/${user._id}`))
+        .findById(user_id)
+        .then(user => res.render('edit', user))
+        .catch(err => console.log(err))
+})
+router.post('/:user_id/edit', (req, res) => {
+
+    const { username, name, profileImg } = req.body
+    const user_id = req.params.user_id
+
+    User
+        .findByIdAndUpdate(user_id, { username, name, profileImg })
+        .then(user => res.redirect(`/users/${user._id}`))
         .catch(err => console.log(err))
 })
 

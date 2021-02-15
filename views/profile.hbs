@@ -2,14 +2,14 @@
     <div class="row justify-content-center">
         <div class="col-md-6">
             <hr>
-            <h1>Hi {{username}}! This is your profile</h1>
+            <h1>Hi {{user.username}}! This is your profile</h1>
             <hr>
 
-            <p> {{profileImg}}</p>
-            <p>UserName: {{username}}</p>
+            <p> {{user.profileImg}}</p>
+            <p>UserName: {{user.username}}</p>
             {{!-- <p>About you: {{description}}</p> ¿? --}}
 
-            <a class="btn btn-dark" href="/admin">Edit your profile</a>
+            <a class="btn btn-dark" href="/user/{{user.id}}/edit">Edit your profile</a>
         </div>
         <div class="col-md-6">
             <hr>
@@ -18,7 +18,7 @@
 
             <p>Watched movies: {{watched}}</p>
             <p>Pending movies: {{pending}}</p>
-            <a class="btn btn-dark" href="/admin">Edit your movies</a>
+            <a class="btn btn-dark" href="/">Edit your movies</a>
         </div>
 
     </div>

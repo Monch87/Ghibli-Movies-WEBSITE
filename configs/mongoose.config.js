@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 mongoose
-  .connect(`${process.env.DB_HOST}/${process.env.DB_NAME}`, {
+  .connect(`mongodb+srv://admin:admin@cluster0.dtta7.mongodb.net/${process.env.DB}`, {
     useNewUrlParser: true,
     useUnifiedTopology: true
   })

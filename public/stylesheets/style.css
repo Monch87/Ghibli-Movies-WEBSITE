@@ -37,6 +37,10 @@ h3 {
 .navbar {
   margin-bottom: 50px; }
 
+#movies-search-results {
+  background-color: white;
+  border-radius: 0.35rem; }
+
 #map {
   height: 400px;
   background-color: gray; }

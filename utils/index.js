@@ -4,5 +4,7 @@ module.exports = {
     const matchFilms = films.filter((film) => regexp.test(film));
     console.log(matchFilms);
     return matchFilms;
-  }
+  },
+  //isAdmin: user => user.role.includes('ADMIN'),
+  isUser: (user) => user.role.includes("USER")
 };

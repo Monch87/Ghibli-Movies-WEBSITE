@@ -25,7 +25,7 @@ router.get('/list-places', (req, res) => {
 
 
 
-// //CREATE NEW PLACE
+//CREATE NEW PLACE
 router.get('/create-new-place', (req, res) => res.render('new'))
 
 router.post('/create-new-place', (req, res, next) => {

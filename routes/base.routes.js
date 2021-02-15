@@ -6,4 +6,10 @@ const router = express.Router()
 router.get('/', (req, res) => res.render('index'))
 
 
+const { checkLoggedIn, checkRole } = require('./../middleware')
+const { isAdmin } = require('./../utils')
+
+router.get('/profile', checkLoggedIn, (req, res) => res.render('profile', { user: req.user }))
+
+
 module.exports = router

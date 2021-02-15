@@ -19,11 +19,13 @@ const userSchema = new Schema(
       path: String,
       originalName: String ///pendiente por aclarar
     },
-    watchmovies: {
-      type: [String]
+    watchedMovies: {
+      type: [mongoose.Types.ObjectId],
+      ref: "Movie"
     },
-    pendingmovies: {
-      type: [String]
+    pendingMovies: {
+      type: [mongoose.Types.ObjectId],
+      ref: "Movie"
     }
   },
   {

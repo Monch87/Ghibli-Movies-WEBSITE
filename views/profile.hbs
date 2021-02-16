@@ -6,12 +6,10 @@
             <hr>
 
             <p> {{user.profileImg}}</p>
-            <p>UserName: {{user.username}}</p>
-            {{!-- <p>About you: {{description}}</p> ¿? --}}
+            <p>Nickname: {{user.username}}</p>
 
-            <a class="btn btn-dark" href="/user/{{user.id}}/edit">Edit your profile</a>
-        </div>
-        <div class="col-md-6">
+            <a class="btn btn-dark" href="/profile/{{user.id}}/edit">Edit your profile</a>
+
             <hr>
             <h1>My movies</h1>
             <hr>
@@ -23,4 +21,3 @@
 
     </div>
 </div>
-

@@ -16,16 +16,16 @@ router.get('/login', (req, res) => {
         .catch(err => console.log(err))
 })
 
-//edit
-router.get('/user/:user_id/edit', (req, res) => {
 
+// User edit
+router.get('/:user_id/edit', (req, res) => {
     const user_id = req.params.user_id
 
     User
         .findById(user_id)
         .then(user => res.render('edit', user))
         .catch(err => console.log(err))
-})
+ })
 router.post('/:user_id/edit', (req, res) => {
 
     const { username, name, profileImg } = req.body

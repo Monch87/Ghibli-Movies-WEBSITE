@@ -23,7 +23,7 @@ new autoComplete({
   },
   resultItem: {
     content: (data, source) => {
-      source.innerHTML = data.match;
+      source.innerHTML = `<a href="/search/movie/${data.value.id}">${data.match}</a>`;
     },
     element: "li"
   },

@@ -7,6 +7,9 @@ const MovieSchema = new Schema(
       type: String,
       required: true
     },
+    image: {
+      path: String
+    },
     ratings: [
       {
         type: mongoose.Types.ObjectId,

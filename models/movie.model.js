@@ -5,11 +5,10 @@ const MovieSchema = new Schema(
   {
     api_id: {
       type: String,
-      required: true
+      required: true,
+      unique: true
     },
-    image: {
-      path: String
-    },
+    image: String,
     ratings: [
       {
         type: mongoose.Types.ObjectId,

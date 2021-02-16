@@ -6,4 +6,6 @@ class GhibliApi {
   }
 
   getFilms = () => this.app.get(`/`);
+
+  //getFilmById = (id) => this.app.get(`/${id}`);
 }

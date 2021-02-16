@@ -8,24 +8,22 @@
 
             <hr>
 
-             <form method="POST" action="/profile/{{id}}/edit"> 
+            <form method="POST" action="/profile/{{id}}/edit" enctype="multipart/form-data">
 
                 <div class="form-group">
                     <label for="username">Nickname:</label>
-                    <input name="username" type="text" class="form-control" id="username">
-                </div>
+                    <input name="username" type="text" class="form-control" id="username" value="{{username}}">
+                </div> 
 
                 <div class="form-group">
                     <label for="name">Name:</label>
-                    <input name="name" type="text" class="form-control" id="name">
+                    <input name="name" type="text" class="form-control" id="name"  value="{{name}}">
                 </div>
 
- {{!-- <form method="POST" action="/profile/{{id}}/edit" enctype="multipart/form-data">
-             <div class="form-group">
+                <div class="form-group">
                     <label for="imageFile">Image</label>
-                <input type="file" class="form-control-file" id="imageFile" name="imageFile">
-                </div> 
-                </form>  --}}
+                    <input type="file" class="form-control-file" id="imageFile" name="imageFile">
+                </div>
 
                 <button type="submit" class="btn btn-dark">Save</button>
                 <a class="btn btn-dark" href="/profile">Back to your profile</a>

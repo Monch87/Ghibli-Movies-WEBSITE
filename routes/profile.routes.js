@@ -19,6 +19,7 @@ router.get('/login', (req, res) => {
 
 // User edit
 router.get('/:user_id/edit', (req, res) => {
+
     const user_id = req.params.user_id
 
     User
@@ -28,13 +29,16 @@ router.get('/:user_id/edit', (req, res) => {
  })
 router.post('/:user_id/edit', (req, res) => {
 
-    const { username, name, profileImg } = req.body
+    const { username, name } = req.body  //profileImg
     const user_id = req.params.user_id
+    console.log(username, user_id, name)
+    console.log(req.body)
 
     User
-        .findByIdAndUpdate(user_id, { username, name, profileImg })
-        .then(user => res.redirect(`/users/${user._id}`))
+        .findByIdAndUpdate(user_id, { username, name })  //profileImg
+        .then(user => res.redirect('/profile'))
         .catch(err => console.log(err))
+    
 })
 
 

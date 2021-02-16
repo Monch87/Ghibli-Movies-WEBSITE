@@ -13,6 +13,8 @@ router.get("/signup", (req, res) => res.render("auth/signup"));
 router.post("/signup", (req, res, next) => {
   const { name, username, password } = req.body;
 
+console.log(req.body)
+
   if (username === "" || password === "") {
     res.render("auth/signup", { errorMsg: "Fill the blanks" });
     return;
@@ -32,8 +34,12 @@ router.post("/signup", (req, res, next) => {
 
       User.create({ name, username, password: hashPass })
         .then(() => res.redirect("/"))
-        .catch((error) =>
+        .catch((error) => {
           res.render("auth/signup", { errorMsg: "Server error" })
+          console.log(error)
+          
+        }
+
         );
     })
     .catch((error) => next(new Error(error)));

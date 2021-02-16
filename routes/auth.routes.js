@@ -13,7 +13,7 @@ router.get("/signup", (req, res) => res.render("auth/signup"));
 router.post("/signup", (req, res, next) => {
   const { name, username, password } = req.body;
 
-console.log(req.body)
+  console.log(req.body)
 
   if (username === "" || password === "") {
     res.render("auth/signup", { errorMsg: "Fill the blanks" });
@@ -33,11 +33,11 @@ console.log(req.body)
       const hashPass = bcrypt.hashSync(password, salt);
 
       User.create({ name, username, password: hashPass })
-        .then(() => res.redirect("/"))
+        .then(() => res.redirect("/login"))
         .catch((error) => {
           res.render("auth/signup", { errorMsg: "Server error" })
           console.log(error)
-          
+
         }
 
         );

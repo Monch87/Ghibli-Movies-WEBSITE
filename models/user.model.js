@@ -14,10 +14,9 @@ const userSchema = new Schema(
       type: String,
       required: true
     },
-    avatar: {
-      name: String,
-      path: String,
-      originalName: String ///pendiente por aclarar
+    avatar:{
+      type:String,
+      default:'https://res.cloudinary.com/dxslsbznp/image/upload/v1613491569/fantasma_byzrqv.svg'
     },
     watchedMovies: {
       type: [mongoose.Types.ObjectId],

@@ -5,7 +5,7 @@
             <h1>Hi {{user.username}}! This is your profile</h1>
             <hr>
 
-            <p> {{user.profileImg}}</p>
+            <img src="{{user.avatar}}" alt=""> 
             <p>Nickname: {{user.username}}</p>
 
             <a class="btn btn-dark" href="/profile/{{user.id}}/edit">Edit your profile</a>

@@ -3,7 +3,8 @@ const mongoose = require("mongoose");
 mongoose
   .connect(`mongodb+srv://admin:admin@cluster0.dtta7.mongodb.net/${process.env.DB}`, {
     useNewUrlParser: true,
-    useUnifiedTopology: true
+    useUnifiedTopology: true,
+    useFindAndModify: false,
   })
   .then((x) =>
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)

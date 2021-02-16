@@ -3,7 +3,7 @@ const router = express.Router();
 const passport = require("passport");
 
 const User = require("../models/user.model");
-const cdnUpload = require('../configs/cloudinary')
+const cdnUpload = require('../configs/cloudinary.config')
 
 
 // User profile 
@@ -36,30 +36,33 @@ router.get('/:user_id/edit', (req, res) => {
 
     User
         .findById(user_id)
-        .then(user => { 
-          console.log(user)  
-          res.render('edit', user)
-}   )
+        .then(user => {
+            console.log(user)
+            res.render('edit', user)
+        })
         .catch(err => console.log(err))
- })
+})
 
 
 
 
 router.post('/:user_id/edit', cdnUpload.single('imageFile'), (req, res) => {
 
-    const { username, name } = req.body 
-    
-    const { path } = req.file ? req.file : undefined
-    const user_id = req.params.user_id
+    const { username, name } = req.body
 
+
+    const user_id = req.params.user_id
+    const newUser = { username, name }
+    if (req.file) newUser.avatar = req.file.path
 
     User
-        .findByIdAndUpdate(user_id, { username, name, avatar:path }, {omitUndefined:true, new:true} )  
-        .then(user => { console.log (user)
-            res.redirect('/profile')})
+        .findByIdAndUpdate(user_id, newUser, { omitUndefined: true, new: true })
+        .then(user => {
+            console.log(user)
+            res.redirect('/profile')
+        })
         .catch(err => console.log(err))
-    
+
 })
 
 

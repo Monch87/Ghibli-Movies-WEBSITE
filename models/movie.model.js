@@ -8,13 +8,7 @@ const MovieSchema = new Schema(
       required: true,
       unique: true
     },
-    image: String,
-    ratings: [
-      {
-        type: mongoose.Types.ObjectId,
-        ref: "Rating" //TBD
-      }
-    ]
+    image: String
   },
   {
     timestamps: true

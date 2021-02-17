@@ -12,8 +12,7 @@ const RatingSchema = new Schema(
       ref: "Movie"
     },
     rating: Number,
-    comment: String,
-    editDate: Date
+    comment: String
   },
   {
     timestamps: true

@@ -7,6 +7,10 @@ const RatingSchema = new Schema(
       type: mongoose.Types.ObjectId,
       ref: "User"
     },
+    movie: {
+      type: mongoose.Types.ObjectId,
+      ref: "Movie"
+    },
     rating: Number,
     comment: String,
     editDate: Date

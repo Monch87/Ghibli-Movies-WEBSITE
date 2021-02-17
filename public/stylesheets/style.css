@@ -30,6 +30,7 @@
     transform: rotate(360deg); } }
 
 body {
+  background-image: url(../images/totorowebpage4.jpg);
   background-position: center center;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -85,8 +86,19 @@ h3 {
   100% {
     transform: translateY(calc(100% + 20px)); } }
 
+.ghibli-logo {
+  justify-content: flex-end;
+  width: 150px;
+  display: flex;
+  margin-top: 20px;
+  margin-left: 20px; }
+
 .container-profiledesign {
-  background-image: url(../images/totorowebpage2.jpg); }
+  background-image: url(../images/totorowebpage4.jpg);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover; }
 
 .avatar-profile {
   font-size: 1.5em;

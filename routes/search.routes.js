@@ -44,4 +44,24 @@ router.post("/movie/:id/pending", checkLoggedIn, async (req, res, next) => {
   }
 });
 
+router.post("/movie/:id/watched", checkLoggedIn, async (req, res, next) => {
+  const userID = req.session.passport.user;
+  try {
+    const movie = await Movie.findOne({ api_id: req.params.id });
+    const user = await User.findById(userID);
+    if (!user.watchedMovies.includes(movie.id)) {
+      const updatedUserMovies = [...user.watchedMovies, movie.id];
+      User.findByIdAndUpdate(
+        userID,
+        { watchedMovies: updatedUserMovies },
+        { omitUndefined: true }
+      )
+        .then(res.redirect("/profile"))
+        .catch((err) => next(err));
+    }
+  } catch (err) {
+    next(err);
+  }
+});
+
 module.exports = router;

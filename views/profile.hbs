@@ -1,36 +1,46 @@
-<section class="container-profiledesign">
-    <div class="row">
-        <div class="col-md-3">
-            <div class="avatar-profile">
-                <hr>
-                <h1>Hi {{user.username}}!</h1>
-                <p>This is your profile</p>
-                <hr>
-                {{!-- <div class='container'> --}}
-                    <img class="avatar-design" src="{{user.avatar}}" width="200" height="200">
-                    {{!-- <div class="text-avatar"> --}}
-                        {{!-- <p id="nickname">{{user.username}}</p> --}}
-                        <a class="btn btn-dark" href="/profile/{{user.id}}/edit">Edit your profile</a>
-                        {{!--
-                    </div>
-                </div> --}}
-            </div>
+<div class="container container-profiledesign">
+    <div class="row justify-content-between">
+        <div class="col-md-3 avatar-profile">
+            <h1>Hi {{user.username}}!</h1>
+            <p>This is your profile</p>
+            <hr>
+            {{!-- <div class='container'> --}}
+                <img class="avatar-design" src="{{user.avatar}}" width="200" height="200">
+                {{!-- <div class="text-avatar"> --}}
+                    {{!-- <p id="nickname">{{user.username}}</p> --}}
+                    <a class="btn btn-dark" href="/profile/{{user.id}}/edit">Edit your profile</a>
+                    {{!--
+                </div>
+            </div> --}}
         </div>
-        <div class="col-md-2">
-            <div class="movies-avatar">
-                <hr>
-                <h1>My movies</h1>
-                <hr>
-
-                <h2>Watched movies: {{user.watchedMovies}}</h2>
-                <h2>Pending movies</h2>
-
-                {{#each pendingMovies}}
-                <img src="{{this.image}}" alt="">
-                <h3>{{this.title}}</h3>
-                {{/each}}
-                <a class="btn btn-dark" href="/">Edit your movies</a>
+        <div class="col-md-7 mb-3 movies-avatar">
+            <div class="row">
+                <div class="col">
+                    <h2>Pending movies</h2>
+                    {{#each pendingMovies}}
+                    <div class="row">
+                        <div class="col-4 mt-4"><img src="{{this.image}}" alt="{{this.title}}"></div>
+                        <div class="col-8 mt-4">
+                            <p>{{this.title}}</p>
+                        </div>
+                    </div>
+                    {{#unless @last}}
+                    <hr>{{/unless}}
+                    {{/each}}
+                </div>
+                <div class="col">
+                    <h2>Watched movies</h2>
+                    {{#each watchedMovies}}
+                    <div class="row">
+                        <div class="col mt-4"><img src="{{this.image}}" alt="{{this.title}}"></div>
+                        <div class="col mt-4">
+                            <p>{{this.title}}</p>
+                        </div>
+                    </div>
+                    {{/each}}
+                </div>
             </div>
+
         </div>
     </div>
-</section>
+</div>

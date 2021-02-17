@@ -36,10 +36,9 @@ router.post("/movie/:id/pending", checkLoggedIn, async (req, res, next) => {
         { pendingMovies: updatedUserMovies },
         { omitUndefined: true }
       )
-        .then(res.send("updated"))
+        .then(res.redirect("/profile"))
         .catch((err) => next(err));
     }
-    res.redirect("/profile");
   } catch (err) {
     next(err);
   }

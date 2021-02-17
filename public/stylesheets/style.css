@@ -96,7 +96,8 @@ h3 {
 .container-index {
   margin: 100px;
   text-align: justify;
-  padding: 140px; }
+  padding: 140px;
+  color: whitesmoke; }
 
 .avatar-profile {
   font-size: 1.5em;

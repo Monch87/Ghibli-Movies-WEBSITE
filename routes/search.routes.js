@@ -16,7 +16,9 @@ router.get("/movie/:id", async (req, res, next) => {
     );
     const { image } = dbMovie;
     const { data } = apiMovie;
-    const movieRatings = await Rating.find({ movie: dbMovie.id });
+    const movieRatings = await Rating.find({ movie: dbMovie.id }).populate(
+      "user"
+    );
     //res.send(movieRatings);
     res.render("movie-details", { image, data, movieRatings });
   } catch (err) {

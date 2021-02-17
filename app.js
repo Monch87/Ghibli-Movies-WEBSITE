@@ -6,6 +6,9 @@ require("./configs/mongoose.config");
 // Debugger
 require("./configs/debugger.config");
 
+// Handlebars
+require("./configs/handlebars.config");
+
 // App
 const express = require("express");
 const app = express();

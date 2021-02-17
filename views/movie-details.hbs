@@ -54,13 +54,18 @@
     <h1>Comments from our users:</h1>
 
     {{#if movieRatings}}
+    {{#each movieRatings}}
     <div class="row">
-        <div class="col">
-            {{#each movieRatings}}
-            <p>{{this.comment}}</p>
-            {{/each}}
+        <div class="col-8">
+            <p>{{this.user.username}} at {{formatDate this.updatedAt}}</p>
+            <div class="comment">
+                {{this.comment}}
+
+            </div>
+
         </div>
     </div>
+    {{/each}}
     {{else}}
     <p>There are no comments for this movie yet</p>
     {{/if}}

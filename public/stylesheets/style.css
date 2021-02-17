@@ -124,4 +124,10 @@ h3 {
   .movies-avatar img {
     width: 100%; }
 
+.comment {
+  background-color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 40px;
+  padding: 20px;
+  border-radius: 5px; }
+
 /*# sourceMappingURL=style.css.map */

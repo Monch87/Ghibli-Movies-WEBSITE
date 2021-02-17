@@ -37,7 +37,7 @@ router.post("/movie/:id/pending", checkLoggedIn, async (req, res, next) => {
         .then(res.redirect("/profile"))
         .catch((err) => next(err));
     } else {
-      document.querySelector(".toast").toast("show");
+      res.redirect("/profile");
     }
   } catch (err) {
     next(err);
@@ -54,7 +54,12 @@ router.post("/movie/:id/watched", checkLoggedIn, async (req, res, next) => {
       const updatedUserMovies = [...user.watchedMovies, movie.id];
       User.findByIdAndUpdate(
         userID,
-        { watchedMovies: updatedUserMovies },
+        {
+          watchedMovies: updatedUserMovies,
+          pendingMovies: user.pendingMovies.filter(
+            (pendingMovie) => pendingMovie != movie.id
+          )
+        },
         { omitUndefined: true }
       )
         .then(res.redirect("/profile"))

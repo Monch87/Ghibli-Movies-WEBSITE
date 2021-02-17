@@ -79,4 +79,9 @@ h3 {
   100% {
     transform: translateY(calc(100% + 20px)); } }
 
+.avatar-design {
+  display: flex;
+  background-color: aqua;
+  text-align: center; }
+
 /*# sourceMappingURL=style.css.map */

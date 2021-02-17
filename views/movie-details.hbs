@@ -1,4 +1,6 @@
 <div class="container">
+
+
     <div class="row">
         <div class="col-12 col-md-4">
             <img src="{{image}}" alt="">
@@ -14,20 +16,21 @@
 
     <div class="row">
         <div class="col-8">
-            <h1> Add comment</h1>
-            <form method="POST" action="/search/movie/{{data.id}}/edit">
+            <h1> Add Review</h1>
+            <form method="POST" action="/search/movie/{{data.id}}/review">
                 <div class="form-group">
                     <label for="rating">Rating:</label>
-                    <input name="rating" type="text" class="form-control" id="rating">
+                    <div id="rateYo"></div>
+                    <input name="rating" type="hidden" class="form-control" id="rating">
                 </div>
 
                 <div class="form-group">
-                    <label for="comment">Comment:</label>
-                    <textarea name="comment" class="form-control" placeholder="Leave your comment here"
+                    <label for="comment">Review:</label>
+                    <textarea name="comment" class="form-control" placeholder="Leave your review here"
                         id="comment"></textarea>
                 </div>
 
-                <button type="submit" class="btn btn-dark btn-block">Save</button>
+                <button id="saveRating" type="submit" class="btn btn-dark btn-block">Save</button>
             </form>
         </div>
         <div class="col">
@@ -51,15 +54,27 @@
     </div>
 
     <h1>Comments from our users:</h1>
-    {{#unless ratings}}
-    There are no comments for this movie yet
-    {{/unless}}
+
+    {{#if movieRatings}}
+    {{#each movieRatings}}
     <div class="row">
-        <div class="col">
-            {{#each ratings}}
-            <div class="user-ratings"></div>
-            {{/each}}
+        <div class="col-8">
+            <p>{{this.user.username}} at {{formatDate this.updatedAt}}</p>
+            <div class="comment">
+                <p>
+                    <b>Rating: <span class="stars" rate={{this.rating}}></span></b>
+                </p>
+                <p>
+                    <b>Review:</b> {{this.comment}}
+                </p>
+
+            </div>
+
         </div>
     </div>
+    {{/each}}
+    {{else}}
+    <p>There are no comments for this movie yet</p>
+    {{/if}}
 
 </div>

@@ -14,11 +14,13 @@ router.get("/movie/:id", async (req, res, next) => {
     const apiMovie = await axios.get(
       `https://ghibliapi.herokuapp.com/films/${req.params.id}`
     );
-    const { image, ratings } = dbMovie;
+    const { image } = dbMovie;
     const { data } = apiMovie;
-    res.render("movie-details", { image, ratings, data });
-    console.log(image);
-    console.log(data);
+    const movieRatings = await Rating.find({ movie: dbMovie.id }).populate(
+      "user"
+    );
+    //res.send(movieRatings);
+    res.render("movie-details", { image, data, movieRatings });
   } catch (err) {
     next(err);
   }
@@ -38,7 +40,65 @@ router.post("/movie/:id/pending", checkLoggedIn, async (req, res, next) => {
       )
         .then(res.redirect("/profile"))
         .catch((err) => next(err));
+    } else {
+      res.redirect("/profile");
     }
+  } catch (err) {
+    next(err);
+  }
+});
+
+router.post("/movie/:id/watched", checkLoggedIn, async (req, res, next) => {
+  const userID = req.session.passport.user;
+
+  try {
+    const movie = await Movie.findOne({ api_id: req.params.id });
+    const user = await User.findById(userID);
+    if (!user.watchedMovies.includes(movie.id)) {
+      const updatedUserMovies = [...user.watchedMovies, movie.id];
+      User.findByIdAndUpdate(
+        userID,
+        {
+          watchedMovies: updatedUserMovies,
+          pendingMovies: user.pendingMovies.filter(
+            (pendingMovie) => pendingMovie != movie.id
+          )
+        },
+        { omitUndefined: true }
+      )
+        .then(res.redirect("/profile"))
+        .catch((err) => next(err));
+    }
+  } catch (err) {
+    next(err);
+  }
+});
+
+router.post("/movie/:id/review", checkLoggedIn, async (req, res, next) => {
+  const userID = req.session.passport.user;
+  const rating = req.body.rating ? req.body.rating : undefined;
+  const comment = req.body.comment ? req.body.comment : undefined;
+  try {
+    const movie = await Movie.findOne({ api_id: req.params.id });
+    const userRating = await Rating.findOne({ user: userID, movie: movie.id });
+    if (!userRating) {
+      await Rating.create({
+        user: userID,
+        movie: movie.id,
+        rating,
+        comment
+      });
+    } else {
+      await Rating.findByIdAndUpdate(
+        userRating.id,
+        {
+          rating,
+          comment
+        },
+        { omitUndefined: true }
+      );
+    }
+    res.redirect(`/search/movie/${movie.api_id}`);
   } catch (err) {
     next(err);
   }

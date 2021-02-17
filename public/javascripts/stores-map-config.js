@@ -37,7 +37,6 @@ function searchPlaces(center, map) {
 
   service.textSearch(request, (results, status) => {
     if (status === google.maps.places.PlacesServiceStatus.OK) {
-      console.log(results);
       for (let i = 0; i < results.length; i++) {
         const photoURL =
           results[i].photos && results[i].photos[0]

@@ -1,11 +1,11 @@
 @import "loader-style.scss";
 
-body {    
-background-image: url(../images/totorowebpage4.jpg);
-background-position: center center;
-background-repeat: no-repeat;
-background-attachment: fixed;
-background-size:cover;
+body {
+  background-image: url(../images/totorowebpage4.jpg);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
 }
 
 h1,
@@ -79,13 +79,8 @@ h3 {
   }
 }
 
-
-.container-index{
-
-  
+.container-index {
 }
-
-
 
 // .logo {
 //   overflow: hidden;
@@ -98,13 +93,11 @@ h3 {
 
 .ghibli-logo {
   justify-content: flex-end;
-  width: 150px; 
-  display:flex;
-  margin-top:20px;
+  width: 150px;
+  display: flex;
+  margin-top: 20px;
   margin-left: 20px;
 }
-
-
 
 // .button{
 //    border: 5px solid #2081c3;
@@ -122,17 +115,12 @@ h3 {
 
 // }
 
-
-
-
-
-
-.container-profiledesign{
-background-image: url(../images/totorowebpage4.jpg);
-background-position: center center;
-background-repeat: no-repeat;
-background-attachment: fixed;
-background-size:cover;
+.container-profiledesign {
+  background-image: url(../images/totorowebpage4.jpg);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
 }
 
 .avatar-profile {
@@ -164,4 +152,11 @@ background-size:cover;
   img {
     width: 100%;
   }
+}
+
+.comment {
+  background-color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 40px;
+  padding: 20px;
+  border-radius: 5px;
 }

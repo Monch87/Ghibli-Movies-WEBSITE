@@ -38,30 +38,28 @@ router.get("/", checkLoggedIn, async (req, res, next) => {
 });
 
 // User edit
-router.get("/:user_id/edit", (req, res) => {
+router.get("/:user_id/edit", (req, res, next) => {
   const user_id = req.params.user_id;
 
   User.findById(user_id)
-    .then((user) => {
-      console.log(user);
-      res.render("edit", user);
-    })
-    .catch((err) => console.log(err));
+    .then((user) => res.render("edit", user))
+    .catch((err) => next(err));
 });
 
-router.post("/:user_id/edit", cdnUpload.single("imageFile"), (req, res) => {
-  const { username, name } = req.body;
+router.post(
+  "/:user_id/edit",
+  cdnUpload.single("imageFile"),
+  (req, res, next) => {
+    const { username, name } = req.body;
 
-  const user_id = req.params.user_id;
-  const newUser = { username, name };
-  if (req.file) newUser.avatar = req.file.path;
+    const user_id = req.params.user_id;
+    const newUser = { username, name };
+    if (req.file) newUser.avatar = req.file.path;
 
-  User.findByIdAndUpdate(user_id, newUser, { omitUndefined: true, new: true })
-    .then((user) => {
-      console.log(user);
-      res.redirect("/profile");
-    })
-    .catch((err) => console.log(err));
-});
+    User.findByIdAndUpdate(user_id, newUser, { omitUndefined: true, new: true })
+      .then((user) => res.redirect("/profile"))
+      .catch((err) => next(err));
+  }
+);
 
 module.exports = router;

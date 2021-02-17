@@ -11,12 +11,37 @@
             <p>Score: {{data.rt_score}}</p>
         </div>
     </div>
+
+    <div class="row">
+        <div class="col-8">
+            <h1> Add comment</h1>
+            <form method="POST" action="">
+                <div class="form-group">
+                    <label for="rating">Rating:</label>
+                    <input name="rating" type="text" class="form-control" id="rating">
+                </div>
+
+                <div class="form-group">
+                    <label for="comment">Comment:</label>
+                    <textarea name="comment" class="form-control" placeholder="Leave your comment here"
+                        id="comment"></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-dark btn-block">Save</button>
+            </form>
+        </div>
+    </div>
+
+    <h1>Comments from our users:</h1>
+    {{#unless ratings}}
+    There are no comments for this movie yet
+    {{/unless}}
     <div class="row">
         <div class="col">
-            <p>Comments:</p>
             {{#each ratings}}
             <div class="user-ratings"></div>
             {{/each}}
         </div>
     </div>
+
 </div>

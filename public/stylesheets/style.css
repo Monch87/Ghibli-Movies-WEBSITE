@@ -5,79 +5,64 @@
   left: 50%;
   transform: translate(-50%, -50%);
   width: 64px;
-  height: 64px;
-}
-.lds-ring div {
-  box-sizing: border-box;
-  display: block;
-  position: absolute;
-  width: 64px;
-  height: 64px;
-  border: 8px solid #fff;
-  border-radius: 50%;
-  animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-  border-color: #fff transparent transparent transparent;
-}
-.lds-ring div:nth-child(1) {
-  animation-delay: -0.45s;
-}
-.lds-ring div:nth-child(2) {
-  animation-delay: -0.3s;
-}
-.lds-ring div:nth-child(3) {
-  animation-delay: -0.15s;
-}
+  height: 64px; }
+  .lds-ring div {
+    box-sizing: border-box;
+    display: block;
+    position: absolute;
+    width: 64px;
+    height: 64px;
+    border: 8px solid #fff;
+    border-radius: 50%;
+    animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    border-color: #fff transparent transparent transparent; }
+  .lds-ring div:nth-child(1) {
+    animation-delay: -0.45s; }
+  .lds-ring div:nth-child(2) {
+    animation-delay: -0.3s; }
+  .lds-ring div:nth-child(3) {
+    animation-delay: -0.15s; }
 
 @keyframes lds-ring {
   0% {
-    transform: rotate(0deg);
-  }
+    transform: rotate(0deg); }
   100% {
-    transform: rotate(360deg);
-  }
-}
+    transform: rotate(360deg); } }
 
 body {
+  background-image: url(../images/totorowebpage4.jpg);
   background-position: center center;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  background-size: cover;
-}
+  background-size: cover; }
 
 h1,
 h2,
 h3 {
-  font-weight: 200;
-}
+  font-weight: 200; }
 
 .navbar {
-  margin-bottom: 50px;
-}
+  margin-bottom: 50px; }
 
 #movies-search-results {
   background-color: white;
-  border-radius: 0.35rem;
-}
+  border-radius: 0.35rem; }
 
 #map {
   height: 400px;
-  background-color: gray;
-}
+  background-color: gray; }
 
 .store-img img {
   width: 100%;
   height: 100px;
-  object-fit: cover;
-}
+  object-fit: cover; }
 
 .search-results {
   height: 400px;
-  overflow-y: scroll;
-}
-.search-results a {
-  text-decoration: none;
-  color: black;
-}
+  overflow-y: scroll; }
+  .search-results a {
+    text-decoration: none;
+    color: black; }
 
 .error-message {
   background-color: #ff9595;
@@ -89,43 +74,45 @@ h3 {
   font-size: 0.9em;
   text-align: center;
   transform: translateY(calc(100% + 20px));
-  animation: showMessage 2s forwards;
-}
+  animation: showMessage 2s forwards; }
 
 @keyframes showMessage {
   0% {
-    transform: translateY(calc(100% + 20px));
-  }
+    transform: translateY(calc(100% + 20px)); }
   10% {
-    transform: translateY(0px);
-  }
+    transform: translateY(0px); }
   90% {
-    transform: translateY(0px);
-  }
+    transform: translateY(0px); }
   100% {
-    transform: translateY(calc(100% + 20px));
-  }
-}
+    transform: translateY(calc(100% + 20px)); } }
+
+.ghibli-logo {
+  justify-content: flex-end;
+  width: 150px;
+  display: flex;
+  margin-top: 20px;
+  margin-left: 20px; }
 
 .container-profiledesign {
-  background-image: url(../images/totorowebpage2.jpg);
-}
+  background-image: url(../images/totorowebpage4.jpg);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover; }
 
 .avatar-profile {
   font-size: 1.5em;
   padding: 60px;
   background-color: #dbd1c3;
   text-align: center;
-  margin-left: 50px;
-}
+  margin-left: 50px; }
 
 .avatar-design {
   background-color: white;
   border-radius: 100px;
   border: 2px solid rgba(63, 50, 5, 0.787);
   padding: 10px;
-  margin: 15px;
-}
+  margin: 15px; }
 
 .movies-avatar {
   text-align: center;
@@ -133,7 +120,6 @@ h3 {
   border-radius: 20px;
   box-shadow: 5px 5px 8px #999;
   float: right;
-  padding: 10px;
-}
+  padding: 10px; }
 
 /*# sourceMappingURL=style.css.map */

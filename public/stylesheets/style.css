@@ -79,7 +79,7 @@ h3 {
   100% {
     transform: translateY(calc(100% + 20px)); } }
 
-.avatar-design {
+.container-profiledesign {
   display: flex;
   background-color: aqua;
   text-align: center; }

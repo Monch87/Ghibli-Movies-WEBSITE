@@ -4,6 +4,7 @@ const { checkLoggedIn } = require("./../middleware");
 
 const Movie = require("../models/movie.model");
 const Rating = require("../models/rating.model");
+const User = require("../models/user.model");
 const router = express.Router();
 
 // Endpoints
@@ -23,11 +24,25 @@ router.get("/movie/:id", async (req, res, next) => {
   }
 });
 
-router.post("/movie/:id/edit", checkLoggedIn, async (req, res, next) => {
+router.post("/movie/:id/pending", checkLoggedIn, async (req, res, next) => {
   const userID = req.session.passport.user;
-  const movieID = req.params.id;
-  Movie.findOne({ api_id: movieID })
-    .then((movie) => res.send(movie))
-    .catch((err) => next(err));
+  try {
+    const movie = await Movie.findOne({ api_id: req.params.id });
+    const user = await User.findById(userID);
+    if (!user.pendingMovies.includes(movie.id)) {
+      const updatedUserMovies = [...user.pendingMovies, movie.id];
+      User.findByIdAndUpdate(
+        userID,
+        { pendingMovies: updatedUserMovies },
+        { omitUndefined: true }
+      )
+        .then(res.send("updated"))
+        .catch((err) => next(err));
+    }
+    res.redirect("/profile");
+  } catch (err) {
+    next(err);
+  }
 });
+
 module.exports = router;

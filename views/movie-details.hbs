@@ -30,6 +30,24 @@
                 <button type="submit" class="btn btn-dark btn-block">Save</button>
             </form>
         </div>
+        <div class="col">
+            <div class="row">
+                <div class="col">
+                    <form action="/search/movie/{{data.id}}/pending" method="post">
+                        <button class="btn btn-dark" type="submit">Add to your pending movies</button>
+                    </form>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <form action="/search/movie/{{data.id}}/watched" method="post">
+                        <button class="btn btn-dark" type="submit">Add to your watched movies</button>
+                    </form>
+                </div>
+            </div>
+
+
+        </div>
     </div>
 
     <h1>Comments from our users:</h1>

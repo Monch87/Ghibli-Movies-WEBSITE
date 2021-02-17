@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container login">
 
     <div class="row justify-content-center">
         <div class="col-md-6">
@@ -23,12 +23,12 @@
 
 
     <div class="row">
-        <div class="col">Haven't signed up yet?</div>
+        <div>Haven't signed up yet?
         <a href="/signup">SIGN UP</a>
-
-        </row>
+        </div>
     </div>
+</div>
 
-    {{#if errorMsg}}
-    <div class="error-message">{{ errorMsg }}</div>
-    {{/if}}
+{{#if errorMsg}}
+<div class="error-message">{{ errorMsg }}</div>
+{{/if}}

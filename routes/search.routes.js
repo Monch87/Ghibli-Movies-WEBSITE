@@ -24,18 +24,8 @@ router.get("/movie/:id", async (req, res, next) => {
   }
 });
 
-router.post("/movie/:id/edit", checkLoggedIn, async (req, res, next) => {
-  const userID = req.session.passport.user;
-  const movieID = req.params.id;
-
-  // Movie.findOne({ api_id: movieID })
-  //   .then((movie) => res.send(movie))
-  //   .catch((err) => next(err));
-});
-
 router.post("/movie/:id/pending", checkLoggedIn, async (req, res, next) => {
   const userID = req.session.passport.user;
-
   try {
     const movie = await Movie.findOne({ api_id: req.params.id });
     const user = await User.findById(userID);
@@ -54,17 +44,5 @@ router.post("/movie/:id/pending", checkLoggedIn, async (req, res, next) => {
     next(err);
   }
 });
-// router.get("/test", (req, res, next) => {
-//   // Rating.create({
-//   //   user: "602a89df759213597da46397",
-//   //   movie: "602bdf43959210154e4f1b62",
-//   //   rating: 4
-//   // })
-//   //   .then((response) => console.log(response))
-//   //   .catch((err) => console.log(err));
-//   Movie.findById("602bdf43959210154e4f1b62")
-//     .populate("ratings")
-//     .then((movie) => res.send(movie))
-//     .catch((err) => next(err));
-// });
+
 module.exports = router;

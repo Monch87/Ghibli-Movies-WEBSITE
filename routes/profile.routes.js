@@ -1,6 +1,5 @@
 const express = require("express");
 const router = express.Router();
-const passport = require("passport");
 const axios = require("axios");
 
 const User = require("../models/user.model");
@@ -37,15 +36,6 @@ router.get("/", checkLoggedIn, async (req, res, next) => {
     next(err);
   }
 });
-
-// User profile
-// router.get("/login", (req, res) => {
-//   const user_id = req.params.user_id;
-
-//   User.findById(user_id)
-//     .then((user) => res.render("profile", user))
-//     .catch((err) => console.log(err));
-// });
 
 // User edit
 router.get("/:user_id/edit", (req, res) => {

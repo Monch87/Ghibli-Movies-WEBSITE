@@ -7,7 +7,7 @@ new autoComplete({
         const data = await source.json();
         return data;
       } catch (err) {
-        console.log(err);
+        console.error(err);
       }
     },
     key: ["title"],

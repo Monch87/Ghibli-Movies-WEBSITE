@@ -17,8 +17,6 @@ router.get("/movie/:id", async (req, res, next) => {
     const { image, ratings } = dbMovie;
     const { data } = apiMovie;
     res.render("movie-details", { image, ratings, data });
-    console.log(image);
-    console.log(data);
   } catch (err) {
     next(err);
   }
@@ -38,6 +36,8 @@ router.post("/movie/:id/pending", checkLoggedIn, async (req, res, next) => {
       )
         .then(res.redirect("/profile"))
         .catch((err) => next(err));
+    } else {
+      document.querySelector(".toast").toast("show");
     }
   } catch (err) {
     next(err);
@@ -46,6 +46,7 @@ router.post("/movie/:id/pending", checkLoggedIn, async (req, res, next) => {
 
 router.post("/movie/:id/watched", checkLoggedIn, async (req, res, next) => {
   const userID = req.session.passport.user;
+
   try {
     const movie = await Movie.findOne({ api_id: req.params.id });
     const user = await User.findById(userID);

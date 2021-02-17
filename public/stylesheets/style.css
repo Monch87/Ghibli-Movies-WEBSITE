@@ -29,6 +29,12 @@
   100% {
     transform: rotate(360deg); } }
 
+body {
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover; }
+
 h1,
 h2,
 h3 {
@@ -79,9 +85,29 @@ h3 {
   100% {
     transform: translateY(calc(100% + 20px)); } }
 
+.container-profiledesign {
+  background-image: url(../images/totorowebpage2.jpg); }
+
+.avatar-profile {
+  font-size: 1.5em;
+  padding: 60px;
+  background-color: #dbd1c3;
+  text-align: center;
+  margin-left: 50px; }
+
 .avatar-design {
-  display: flex;
-  background-color: aqua;
-  text-align: center; }
+  background-color: white;
+  border-radius: 100px;
+  border: 2px solid rgba(63, 50, 5, 0.787);
+  padding: 10px;
+  margin: 15px; }
+
+.movies-avatar {
+  text-align: center;
+  background-color: #dbd1c3;
+  border-radius: 20px;
+  box-shadow: 5px 5px 8px #999;
+  float: right;
+  padding: 10px; }
 
 /*# sourceMappingURL=style.css.map */

@@ -1,18 +1,22 @@
 <section class="container-profiledesign">
-    <div class="row justify-content-center">
-        <div class="col-md-6">
-          
+    <div class="row">
+        <div class="col-md-3">
+        <div class="avatar-profile">
                 <hr>
-                <h1>Hi {{user.username}}! This is your profile</h1>
+                <h1>Hi {{user.username}}!</h1>
+                <p>This is your profile</p>
                 <hr>
-                <img src="{{user.avatar}}" width="300" height="300" class="float-left mr-4">
-                <div class="avatar design">
-                <p>Nickname: {{user.username}}</p>
-                <a class="btn btn-dark" href="/profile/{{user.id}}/edit">Edit your profile</a>
-            </div>
-
-
-            <div class="movies">
+                {{!-- <div class='container'> --}}
+                    <img class="avatar-design" src="{{user.avatar}}" width="200" height="200" >
+                    {{!-- <div class="text-avatar">  --}}
+                        {{!-- <p id="nickname">{{user.username}}</p> --}}
+                        <a class="btn btn-dark" href="/profile/{{user.id}}/edit">Edit your profile</a>
+                    {{!-- </div>
+                </div> --}}
+        </div>
+</div>
+<div class="col-md-2">
+            <div class="movies-avatar">
                 <hr>
                 <h1>My movies</h1>
                 <hr>

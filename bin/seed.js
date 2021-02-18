@@ -112,11 +112,6 @@ const movies = [
     image:
       "https://res.cloudinary.com/dxslsbznp/image/upload/v1613593095/whenmarinewasthere_nbgzxh.jpg"
   }
-  // {
-  //   api_id: "2baf70d1-42bb-4437-b551-e5fed5a87abe",
-  //   image:
-  //     "https://res.cloudinary.com/dcprb2mtk/image/upload/v1613472577/ghibli/castle-sky_r26ayx.jpg",
-  // },
 ];
 
 Movie.create(movies)

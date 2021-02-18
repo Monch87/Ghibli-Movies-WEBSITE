@@ -36,7 +36,7 @@ body {
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
-  font-family: 'Averia Serif Libre', cursive; }
+  font-family: "Averia Serif Libre", cursive; }
 
 h1,
 h2,
@@ -96,7 +96,8 @@ h3 {
 .container-index {
   margin: 100px;
   text-align: justify;
-  padding: 140px; }
+  padding: 140px;
+  color: whitesmoke; }
 
 .avatar-profile {
   font-size: 1.5em;

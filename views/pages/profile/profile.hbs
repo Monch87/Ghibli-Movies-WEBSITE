@@ -48,12 +48,13 @@
                 </div>
 
             </div>
+
             {{/if}}
         </div>
         <div class="col-5 text-center avatar-profile">
             {{#if watchedMovies}}
 
-            <div class="glide profile-card profile-height">
+            <div class="glide glide-2 profile-card profile-height">
                 <h3>Watched movies</h3>
                 <hr>
                 <div class="glide__track" data-glide-el="track">
@@ -74,19 +75,25 @@
                         {{/each}}
                     </div>
                 </div>
-                <div class="glide">
+                <div class="glide glide-2">
                     <div class="glide__arrows" data-glide-el="controls">
                         <button class="glide__arrow glide__arrow--left" data-glide-dir="<">prev</button>
                         <button class="glide__arrow glide__arrow--right" data-glide-dir=">">next</button>
                     </div>
                 </div>
             </div>
+            {{/if}}
         </div>
     </div>
-    {{/if}}
     <script src="https://unpkg.com/@glidejs/glide@3.4.1/dist/glide.min.js"></script>
     <script>
         new Glide('.glide', {
+            type: 'carousel',
+            focusAt: 'center',
+            perView: 3,
+            gap: 5,
+        }).mount()
+        new Glide('.glide-2', {
             type: 'carousel',
             focusAt: 'center',
             perView: 3,

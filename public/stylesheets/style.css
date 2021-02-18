@@ -133,6 +133,10 @@ a {
   max-width: 100%;
   height: auto; }
 
+.autocomplete-list {
+  position: fixed;
+  width: 370px; }
+
 .movies-avatar {
   text-align: center;
   float: right;

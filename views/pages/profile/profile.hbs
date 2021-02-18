@@ -1,8 +1,6 @@
-<div class="container container-profiledesign">
-    <div class="row justify-content-between">
-
-
-        <div class="col-md-3 avatar-profile">
+<div>
+    <div class="row profile-design">
+        <div class="col-md-2 avatar-profile">
             <h2>Hi {{user.username}}!</h2>
             <p>This is your profile</p>
             <hr>
@@ -11,7 +9,7 @@
             <a id="button-profile" class="btn btn-dark" href="/profile/{{user.id}}/edit">Edit your profile</a>
         </div>
 
-        <div class="col-md-9 avatar-profile">
+        <div class="col-md-5 movies">
 
             {{#if pendingMovies}}
 
@@ -22,11 +20,12 @@
                     <div class="glide__slides">
                         {{#each pendingMovies}}
                         <div class="glide__slide">
-                            <a href="/search/movie/{{this.api_id}}" class="text-decoration-none">
-
+                            <a href="/search/movie/{{this.api_id}}">
                                 <figure>
                                     <img src="{{this.image}}" alt="{{this.title}}" width="140" height="180">
+                                    <figcaption>
                                     <p>{{this.title}}</p>
+                                    </figcaption>
                                 </figure>
 
                             </a>
@@ -48,7 +47,7 @@
             {{/if}}
 
 
-            <hr>
+        
             {{#if watchedMovies}}
 
             <div class="glide">
@@ -73,7 +72,6 @@
                     </div>
                 </div>
                 <div class="glide">
-                    {{!-- <div class="glide__track" data-glide-el="track">...</div> --}}
                     <div class="glide__arrows" data-glide-el="controls">
                         <button class="glide__arrow glide__arrow--left" data-glide-dir="<">prev</button>
                         <button class="glide__arrow glide__arrow--right" data-glide-dir=">">next</button>
@@ -87,7 +85,7 @@
             new Glide('.glide', {
                 type: 'carousel',
                 focusAt: 'center',
-                perView: 4,
+                perView: 3,
                 gap: 5,
             }).mount()
         </script>

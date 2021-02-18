@@ -11,7 +11,7 @@
             <a id="button-profile" class="btn btn-dark" href="/profile/{{user.id}}/edit">Edit your profile</a>
         </div>
 
-
+        {{#if pendingMovies}}
 
         <div class="glide">
             <h3>Pending movies</h3>
@@ -19,27 +19,22 @@
             <div class="glide__track" data-glide-el="track">
                 <div class="glide__slides">
                     {{#each pendingMovies}}
-                    <a href="/search/movie/{{this.api_id}}" class="text-decoration-none"></a>
                     <div class="glide__slide">
-                        <figure>
-                            <img src="{{this.image}}" alt="{{this.title}}" width="140" height="180">
-                            <figcaption>
-                                <p>{{this.title}}</p>
-                            </figcaption>
-                        </figure>
-                    </div>
-                    </a>
-                    <a href="/profile/delete-pending-movie?id={{this.id}}" class="btn btn-sm btn-dark">Remove</a>
-                    {{#unless @last}}
-                    <hr>
-                    {{/unless}}
+                        <a href="/search/movie/{{this.api_id}}" class="text-decoration-none">
 
+                            <figure>
+                                <img src="{{this.image}}" alt="{{this.title}}" width="140" height="180">
+                                <p>{{this.title}}</p>
+                            </figure>
+
+                        </a>
+                        <a href="/profile/delete-pending-movie?id={{this.id}}" class="btn btn-sm btn-dark">Remove</a>
+                    </div>
                     {{/each}}
                 </div>
             </div>
 
             <div class="glide">
-                {{!-- <div class="glide__track" data-glide-el="track">...</div> --}}
                 <div class="glide__arrows" data-glide-el="controls">
                     <button class="glide__arrow glide__arrow--left" data-glide-dir="<">prev</button>
                     <button class="glide__arrow glide__arrow--right" data-glide-dir=">">next</button>
@@ -49,17 +44,10 @@
         </div>
 
 
-        <script src="https://unpkg.com/@glidejs/glide@3.4.1/dist/glide.min.js"></script>
-        <script>
-            new Glide('.glide', {
-                type: 'carousel',
-                focusAt: 'center',
-                perView: 4,
-            }).mount()
-        </script>
+        {{/if}}
 
         <hr>
-
+        {{#if watchedMovies}}
 
         <div class="glide">
             <h3>Watched movies</h3>
@@ -67,23 +55,17 @@
             <div class="glide__track" data-glide-el="track">
                 <div class="glide__slides">
                     {{#each watchedMovies}}
-                    <a href="/search/movie/{{this.api_id}}">
-                        <div class="glide__slide">
+                    <div class="glide__slide">
+                        <a href="/search/movie/{{this.api_id}}">
                             <figure>
                                 <img src="{{this.image}}" alt="{{this.title}}" width="140" height="180">
                                 <figcaption>
                                     <p>{{this.title}}</p>
                                 </figcaption>
                             </figure>
-                        </div>
-                    </a>
-                    <div>
+                        </a>
                         <a href="/profile/delete-watched-movie?id={{this.id}}" class="btn btn-sm btn-dark">Remove</a>
                     </div>
-                    {{#unless @last}}
-                    <hr>
-                    {{/unless}}
-
                     {{/each}}
                 </div>
             </div>
@@ -103,5 +85,8 @@
             type: 'carousel',
             focusAt: 'center',
             perView: 4,
+            gap: 5,
         }).mount()
     </script>
+    {{/if}}
+</div>

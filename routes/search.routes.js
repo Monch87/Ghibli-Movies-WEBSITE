@@ -51,7 +51,7 @@ router.post("/movie/:id/pending", checkLoggedIn, async (req, res, next) => {
         { pendingMovies: updatedUserMovies },
         { omitUndefined: true }
       )
-        .then(res.redirect("/profile"))
+        .then(() => res.redirect("/profile"))
         .catch(err => next(err))
     } else {
       res.redirect("/profile")
@@ -81,7 +81,7 @@ router.post("/movie/:id/watched", checkLoggedIn, async (req, res, next) => {
         },
         { omitUndefined: true }
       )
-        .then(res.redirect("/profile"))
+        .then(() => res.redirect("/profile"))
         .catch(err => next(err))
     }
   } catch (err) {

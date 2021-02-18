@@ -3,13 +3,16 @@
 
 
         <div class="col-3 text-center">
-            <div class="profile-card profile-height">
-                <h2>Hi {{user.username}}!</h2>
-                <p>This is your profile</p>
-                <hr>
-                <img class="avatar-design" src="{{user.avatar}}" width="200" height="200">
-                <hr>
-                <a id="button-profile" class="btn btn-dark" href="/profile/{{user.id}}/edit">Edit your profile</a>
+            <div class="profile-card profile-height d-flex justify-content-center align-items-center">
+                <div class="my-auto">
+
+                    <h2>Hi {{user.username}}!</h2>
+                    <p>This is your profile</p>
+                    <hr>
+                    <img class="avatar-design" src="{{user.avatar}}" width="200" height="200">
+                    <hr>
+                    <a id="button-profile" class="btn btn-dark" href="/profile/{{user.id}}/edit">Edit your profile</a>
+                </div>
             </div>
         </div>
 

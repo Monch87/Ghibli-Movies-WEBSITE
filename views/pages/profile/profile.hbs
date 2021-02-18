@@ -1,5 +1,7 @@
 <div class="container container-profiledesign">
     <div class="row justify-content-between">
+
+
         <div class="col-md-3 avatar-profile">
             <h2>Hi {{user.username}}!</h2>
             <p>This is your profile</p>
@@ -8,51 +10,98 @@
             <hr>
             <a id="button-profile" class="btn btn-dark" href="/profile/{{user.id}}/edit">Edit your profile</a>
         </div>
-        <div class="col-md-7 mb-3 movies-avatar">
-            <div class="row">
 
-                <div class="col-6">
-                    <h3>Pending movies</h3>
+
+
+        <div class="glide">
+            <h3>Pending movies</h3>
+            <hr>
+            <div class="glide__track" data-glide-el="track">
+                <div class="glide__slides">
                     {{#each pendingMovies}}
-                    <div class="row">
-                        <a href="/search/movie/{{this.api_id}}" class="text-decoration-none">
-                            <div class="col-8 mt-4"><img src="{{this.image}}" alt="{{this.title}}">
+                    <a href="/search/movie/{{this.api_id}}" class="text-decoration-none"></a>
+                    <div class="glide__slide">
+                        <figure>
+                            <img src="{{this.image}}" alt="{{this.title}}" width="140" height="180">
+                            <figcaption>
                                 <p>{{this.title}}</p>
-                            </div>
-                        </a>
+                            </figcaption>
+                        </figure>
                     </div>
-                    <div class="row">
-                        <div class="col">
-                            <a href="/profile/delete-pending-movie?id={{this.id}}"
-                                class="btn btn-sm btn-dark">Remove</a>
-                        </div>
-                    </div>
+                    </a>
+                    <a href="/profile/delete-pending-movie?id={{this.id}}" class="btn btn-sm btn-dark">Remove</a>
+                    {{#unless @last}}
+                    <hr>
+                    {{/unless}}
+
                     {{/each}}
                 </div>
-
-                <div class="col-6">
-                    <h3>Watched movies</h3>
-                    {{#each watchedMovies}}
-                    <div class="row">
-                        <a href="/search/movie/{{this.api_id}}" class="text-decoration-none">
-                            <div class="col-8 mt-4">
-                                <img src="{{this.image}}" alt="{{this.title}}">
-                                <p>{{this.title}}</p>
-                            </div>
-
-                        </a>
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            <a href="/profile/delete-watched-movie?id={{this.id}}"
-                                class="btn btn-sm btn-dark">Remove</a>
-                        </div>
-                    </div>
-                    {{/each}}
-                </div>
-
             </div>
+
+            <div class="glide">
+                {{!-- <div class="glide__track" data-glide-el="track">...</div> --}}
+                <div class="glide__arrows" data-glide-el="controls">
+                    <button class="glide__arrow glide__arrow--left" data-glide-dir="<">prev</button>
+                    <button class="glide__arrow glide__arrow--right" data-glide-dir=">">next</button>
+                </div>
+            </div>
+
         </div>
 
+
+        <script src="https://unpkg.com/@glidejs/glide@3.4.1/dist/glide.min.js"></script>
+        <script>
+            new Glide('.glide', {
+                type: 'carousel',
+                focusAt: 'center',
+                perView: 4,
+            }).mount()
+        </script>
+
+        <hr>
+
+
+        <div class="glide">
+            <h3>Watched movies</h3>
+            <hr>
+            <div class="glide__track" data-glide-el="track">
+                <div class="glide__slides">
+                    {{#each watchedMovies}}
+                    <a href="/search/movie/{{this.api_id}}">
+                        <div class="glide__slide">
+                            <figure>
+                                <img src="{{this.image}}" alt="{{this.title}}" width="140" height="180">
+                                <figcaption>
+                                    <p>{{this.title}}</p>
+                                </figcaption>
+                            </figure>
+                        </div>
+                    </a>
+                    <div>
+                        <a href="/profile/delete-watched-movie?id={{this.id}}" class="btn btn-sm btn-dark">Remove</a>
+                    </div>
+                    {{#unless @last}}
+                    <hr>
+                    {{/unless}}
+
+                    {{/each}}
+                </div>
+            </div>
+            <div class="glide">
+                {{!-- <div class="glide__track" data-glide-el="track">...</div> --}}
+                <div class="glide__arrows" data-glide-el="controls">
+                    <button class="glide__arrow glide__arrow--left" data-glide-dir="<">prev</button>
+                    <button class="glide__arrow glide__arrow--right" data-glide-dir=">">next</button>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
+
+    <script src="https://unpkg.com/@glidejs/glide@3.4.1/dist/glide.min.js"></script>
+    <script>
+        new Glide('.glide', {
+            type: 'carousel',
+            focusAt: 'center',
+            perView: 4,
+        }).mount()
+    </script>

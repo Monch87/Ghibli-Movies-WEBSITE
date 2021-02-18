@@ -5,12 +5,13 @@ $(function () {
   });
 });
 
-$("#rateYo").rateYo({
-  rating: document.querySelector("#rateYo")
-    ? document.querySelector("#rateYo").getAttribute("rate")
-    : 0,
-  halfStar: true
-});
+if (document.querySelector("#rateYo")) {
+  const rate = document.querySelector("#rateYo").getAttribute("rate");
+  $("#rateYo").rateYo({
+    rating: rate ? rate : 0,
+    halfStar: true
+  });
+}
 
 // Get numerical value from all ratings and turn into stars value
 const allRates = document.querySelectorAll(".stars");

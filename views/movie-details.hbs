@@ -17,7 +17,7 @@
     {{#if authenticated}}
     <div class="row">
         <div class="col-8">
-            <h1> Add Review</h1>
+            <h1> {{#if userRating}}Edit your{{else}}Add{{/if}} Review</h1>
             <form method="POST" action="/search/movie/{{data.id}}/review">
                 <div class="form-group">
                     <label for="rating">Rating:</label>

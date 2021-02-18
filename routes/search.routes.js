@@ -6,6 +6,7 @@ const Movie = require("../models/movie.model");
 const Rating = require("../models/rating.model");
 const User = require("../models/user.model");
 const router = express.Router();
+const apiHandler = require("../services");
 
 // Endpoints
 
@@ -13,11 +14,10 @@ const router = express.Router();
 router.get("/movie/:id", async (req, res, next) => {
   const authenticated = req.isAuthenticated();
   const userID = authenticated ? req.session.passport.user : null;
+  const GhibliApi = new apiHandler();
   try {
     const dbMovie = await Movie.findOne({ api_id: req.params.id });
-    const apiMovie = await axios.get(
-      `https://ghibliapi.herokuapp.com/films/${req.params.id}`
-    );
+    const apiMovie = await GhibliApi.getFilmById(req.params.id);
     const { image } = dbMovie;
     const { data } = apiMovie;
     const movieRatings = await Rating.find({ movie: dbMovie.id }).populate({

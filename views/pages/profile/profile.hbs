@@ -14,9 +14,13 @@
                     <h3>Pending movies</h3>
                     <div class="row">
                         {{#each pendingMovies}}
-                        <div class="col-4 mt-4"><img src="{{this.image}}" alt="{{this.title}}">
-                            <p>{{this.title}}</p>
-                        </div>
+                        <a href="/search/movie/{{this.api_id}}" class="text-decoration-none">
+                            <div class="row">
+                                <div class="col-4 mt-4"><img src="{{this.image}}" alt="{{this.title}}">
+                                    <p>{{this.title}}</p>
+                                </div>
+                            </div>
+                        </a>
                     </div>
                     {{#unless @last}}
                     <hr>{{/unless}}
@@ -28,13 +32,13 @@
                     <h3>Watched movies</h3>
                     <div class="row"></div>
                     {{#each watchedMovies}}
-
-                    <a href="/search/movie/{{this.api_id}}">
+                    <a href="/search/movie/{{this.api_id}}" class="text-decoration-none">
                         <div class="row">
                             <div class="col mt-4">
                                 <img src="{{this.image}}" alt="{{this.title}}">
                                 <p>{{this.title}}</p>
                             </div>
+                        </div>
                     </a>
                     {{/each}}
                 </div>
@@ -42,5 +46,4 @@
         </div>
 
     </div>
-</div>
 </div>

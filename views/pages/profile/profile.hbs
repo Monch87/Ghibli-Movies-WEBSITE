@@ -1,33 +1,37 @@
-<div>
-    <div class="row profile-design">
-        <div class="col-md-2 avatar-profile">
-            <h2>Hi {{user.username}}!</h2>
-            <p>This is your profile</p>
-            <hr>
-            <img class="avatar-design" src="{{user.avatar}}" width="200" height="200">
-            <hr>
-            <a id="button-profile" class="btn btn-dark" href="/profile/{{user.id}}/edit">Edit your profile</a>
+<div class="container container-profiledesign">
+    <div class="row justify-content-between">
+
+
+        <div class="col-2 text-center">
+            <div class="profile-card profile-height d-flex justify-content-center align-items-center">
+                <div class="my-auto">
+
+                    <h2>Hi {{user.username}}!</h2>
+                    <p>This is your profile</p>
+                    <hr>
+                    <img class="avatar-design" src="{{user.avatar}}" width="200" height="200">
+                    <hr>
+                    <a id="button-profile" class="btn btn-dark" href="/profile/{{user.id}}/edit">Edit your profile</a>
+                </div>
+            </div>
         </div>
 
-        <div class="col-md-5 movies">
+        <div class="col-5 text-center avatar-profile">
 
             {{#if pendingMovies}}
 
-            <div class="glide">
+            <div class="glide profile-card profile-height">
                 <h3>Pending movies</h3>
                 <hr>
                 <div class="glide__track" data-glide-el="track">
                     <div class="glide__slides">
                         {{#each pendingMovies}}
                         <div class="glide__slide">
-                            <a href="/search/movie/{{this.api_id}}">
+                            <a href="/search/movie/{{this.api_id}}" class="text-decoration-none">
                                 <figure>
                                     <img src="{{this.image}}" alt="{{this.title}}" width="140" height="180">
-                                    <figcaption>
-                                    <p>{{this.title}}</p>
-                                    </figcaption>
                                 </figure>
-
+                                <p class="card-title">{{this.title}}</p>
                             </a>
                             <a href="/profile/delete-pending-movie?id={{this.id}}"
                                 class="btn btn-sm btn-dark">Remove</a>
@@ -45,12 +49,11 @@
 
             </div>
             {{/if}}
-
-
-        
+        </div>
+        <div class="col-5 text-center avatar-profile">
             {{#if watchedMovies}}
 
-            <div class="glide">
+            <div class="glide profile-card profile-height">
                 <h3>Watched movies</h3>
                 <hr>
                 <div class="glide__track" data-glide-el="track">
@@ -61,7 +64,7 @@
                                 <figure>
                                     <img src="{{this.image}}" alt="{{this.title}}" width="140" height="180">
                                     <figcaption>
-                                        <p>{{this.title}}</p>
+                                        <p class="card-title">{{this.title}}</p>
                                     </figcaption>
                                 </figure>
                             </a>
@@ -79,15 +82,15 @@
                 </div>
             </div>
         </div>
-</div>
-        <script src="https://unpkg.com/@glidejs/glide@3.4.1/dist/glide.min.js"></script>
-        <script>
-            new Glide('.glide', {
-                type: 'carousel',
-                focusAt: 'center',
-                perView: 3,
-                gap: 5,
-            }).mount()
-        </script>
-        {{/if}}
+    </div>
+    {{/if}}
+    <script src="https://unpkg.com/@glidejs/glide@3.4.1/dist/glide.min.js"></script>
+    <script>
+        new Glide('.glide', {
+            type: 'carousel',
+            focusAt: 'center',
+            perView: 3,
+            gap: 5,
+        }).mount()
+    </script>
 </div>

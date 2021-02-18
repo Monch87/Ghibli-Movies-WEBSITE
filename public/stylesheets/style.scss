@@ -1,6 +1,9 @@
 @import "loader-style.scss";
 @import url("https://fonts.googleapis.com/css2?family=Averia+Serif+Libre&display=swap");
 
+$color-white: rgba(245, 242, 242, 0.6);
+$color-avatar-aqua: rgb(140, 212, 212);
+
 body {
   background-image: url(../images/webpage.jpg);
   background-position: center center;
@@ -24,6 +27,7 @@ a {
 }
 .navbar {
   margin-bottom: 50px;
+  height: 100px;
 }
 
 .navbar-brand img {
@@ -133,7 +137,6 @@ a {
 
 
 
-
 .avatar-profile {
   font-size: 1.5em;
   align-items: center;
@@ -144,6 +147,17 @@ a {
   height:100%;
 }
 
+.profile-card {
+  background-color: $color-white;
+  padding: 20px;
+  border-radius: 8px;
+  &.profile-height {
+    height: 560px;
+  }
+  .card-title {
+    height: 100px;
+  }
+}
 .avatar-design {
   background-color: white;
   border-radius: 20px;
@@ -192,4 +206,12 @@ a {
 
 .movies{
   margin-left: 100px;
+}
+// .movies-carousel img{
+//   height: 250px;
+//   object-fit: cover;
+// }
+.glide__arrow {
+  background-color: $color-avatar-aqua;
+  top: 40px;
 }

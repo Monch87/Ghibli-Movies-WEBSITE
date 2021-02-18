@@ -49,7 +49,8 @@ a {
     color: black; }
 
 .navbar {
-  margin-bottom: 50px; }
+  margin-bottom: 50px;
+  height: 100px; }
 
 .navbar-brand img {
   width: 140px;
@@ -124,13 +125,16 @@ a {
   z-index: -1; }
 
 .avatar-profile {
-  font-size: 1.5em;
-  align-items: center;
+  font-size: 1.5em; }
+
+.profile-card {
+  background-color: #f2fdfe;
   padding: 20px;
-  text-align: center;
-  margin-left: 50px;
-  width: 100%;
-  height: 100%; }
+  border-radius: 8px; }
+  .profile-card.profile-height {
+    height: 560px; }
+  .profile-card .card-title {
+    height: 100px; }
 
 .avatar-design {
   background-color: white;
@@ -169,5 +173,9 @@ a {
 
 .movies {
   margin-left: 100px; }
+
+.glide__arrow {
+  background-color: #8cd4d4;
+  top: 40px; }
 
 /*# sourceMappingURL=style.css.map */

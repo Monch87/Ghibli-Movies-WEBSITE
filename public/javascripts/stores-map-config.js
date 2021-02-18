@@ -1,28 +1,36 @@
+const flameIconUrl = "../images/flame_icon.png"
+const totoroIconUrl = "../images/totoro_icon.png"
 function initMap() {
   if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(success);
+    navigator.geolocation.getCurrentPosition(success)
   }
 }
 
-function createMarker(lat, lng, title, map) {
-  const position = { lat, lng };
-  new google.maps.Marker({ position, map, title });
+function createMarker(lat, lng, title, map, icon = flameIconUrl) {
+  const position = { lat, lng }
+  new google.maps.Marker({
+    position,
+    map,
+    title,
+    icon,
+  })
 }
 
 function success(position) {
-  const lat = position.coords.latitude;
-  const lng = position.coords.longitude;
+  const lat = position.coords.latitude
+  const lng = position.coords.longitude
 
-  const myLocation = new google.maps.LatLng(lat, lng);
+  const myLocation = new google.maps.LatLng(lat, lng)
 
   const mapOptions = {
     center: myLocation,
-    zoom: 11.5
-  };
+    zoom: 11.5,
+  }
 
-  const map = new google.maps.Map(document.getElementById("map"), mapOptions);
+  const map = new google.maps.Map(document.getElementById("map"), mapOptions)
+  createMarker(lat, lng, "current position", map, totoroIconUrl)
 
-  searchPlaces(myLocation, map);
+  searchPlaces(myLocation, map)
 }
 
 function searchPlaces(center, map) {
@@ -30,10 +38,10 @@ function searchPlaces(center, map) {
     query: "ghibli merchandising",
     fields: ["name", "geometry", "place_id"],
     location: center,
-    radius: 30
-  };
+    radius: 30,
+  }
 
-  const service = new google.maps.places.PlacesService(map);
+  const service = new google.maps.places.PlacesService(map)
 
   service.textSearch(request, (results, status) => {
     if (status === google.maps.places.PlacesServiceStatus.OK) {
@@ -41,24 +49,24 @@ function searchPlaces(center, map) {
         const photoURL =
           results[i].photos && results[i].photos[0]
             ? results[i].photos[0].getUrl({ maxHeight: 100 })
-            : "https://i.pinimg.com/originals/a4/fa/8c/a4fa8c0588f96c91989308c2448b095a.png";
+            : "https://i.pinimg.com/originals/a4/fa/8c/a4fa8c0588f96c91989308c2448b095a.png"
 
         displayDetails(
           results[i].name,
           results[i].formatted_address,
           results[i].place_id,
           photoURL
-        );
+        )
 
         createMarker(
           results[i].geometry.location.lat(),
           results[i].geometry.location.lng(),
           results[i].name,
           map
-        );
+        )
       }
     }
-  });
+  })
 }
 
 function displayDetails(name, address, place_id, photoURL) {
@@ -76,6 +84,6 @@ function displayDetails(name, address, place_id, photoURL) {
   
   </a>
   
-<hr>`;
-  document.querySelector(".search-results").innerHTML += resultHMTL;
+<hr>`
+  document.querySelector(".search-results").innerHTML += resultHMTL
 }

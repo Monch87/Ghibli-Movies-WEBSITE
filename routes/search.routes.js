@@ -9,6 +9,7 @@ const router = express.Router();
 
 // Endpoints
 router.get("/movie/:id", async (req, res, next) => {
+  const authenticated = req.isAuthenticated();
   try {
     const dbMovie = await Movie.findOne({ api_id: req.params.id });
     const apiMovie = await axios.get(
@@ -20,7 +21,7 @@ router.get("/movie/:id", async (req, res, next) => {
       "user"
     );
     //res.send(movieRatings);
-    res.render("movie-details", { image, data, movieRatings });
+    res.render("movie-details", { image, data, movieRatings, authenticated });
   } catch (err) {
     next(err);
   }

@@ -31,7 +31,7 @@ router.get("/", checkLoggedIn, async (req, res, next) => {
         return { api_id: movie.api_id, image: movie.image, title };
       })
     );
-    res.render("profile/profile", { user, pendingMovies, watchedMovies });
+    res.render("pages/profile/profile", { user, pendingMovies, watchedMovies });
   } catch (err) {
     next(err);
   }
@@ -42,7 +42,7 @@ router.get("/:user_id/edit", (req, res, next) => {
   const user_id = req.params.user_id;
 
   User.findById(user_id)
-    .then((user) => res.render("profile/edit", user))
+    .then((user) => res.render("pages/profile/edit", user))
     .catch((err) => next(err));
 });
 

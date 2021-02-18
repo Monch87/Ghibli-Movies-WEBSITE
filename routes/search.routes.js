@@ -28,7 +28,7 @@ router.get("/movie/:id", async (req, res, next) => {
     const userRating = movieRatings.find(
       (movieRating) => movieRating.user.id === userID
     );
-    res.render("movie-details", {
+    res.render("pages/movie-details", {
       image,
       data,
       movieRatings,

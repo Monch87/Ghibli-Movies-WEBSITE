@@ -3,7 +3,7 @@ const router = express.Router();
 
 // Endpoints
 router.get("/", (req, res) =>
-  res.render("stores", { apiKey: process.env.API_KEY })
+  res.render("pages/stores", { apiKey: process.env.API_KEY })
 );
 
 module.exports = router;

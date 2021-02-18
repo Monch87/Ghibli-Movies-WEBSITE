@@ -10,6 +10,7 @@ const router = express.Router();
 // Endpoints
 router.get("/movie/:id", async (req, res, next) => {
   const authenticated = req.isAuthenticated();
+  const userID = authenticated ? req.session.passport.user : null;
   try {
     const dbMovie = await Movie.findOne({ api_id: req.params.id });
     const apiMovie = await axios.get(
@@ -17,11 +18,21 @@ router.get("/movie/:id", async (req, res, next) => {
     );
     const { image } = dbMovie;
     const { data } = apiMovie;
-    const movieRatings = await Rating.find({ movie: dbMovie.id }).populate(
-      "user"
+    const movieRatings = await Rating.find({ movie: dbMovie.id }).populate({
+      path: "user",
+      select: "username"
+    });
+
+    const userRating = movieRatings.find(
+      (movieRating) => movieRating.user.id === userID
     );
-    //res.send(movieRatings);
-    res.render("movie-details", { image, data, movieRatings, authenticated });
+    res.render("movie-details", {
+      image,
+      data,
+      movieRatings,
+      authenticated,
+      userRating
+    });
   } catch (err) {
     next(err);
   }

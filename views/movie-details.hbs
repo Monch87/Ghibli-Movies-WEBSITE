@@ -28,7 +28,7 @@
                 <div class="form-group">
                     <label for="comment">Review:</label>
                     <textarea name="comment" class="form-control" placeholder="Leave your review here"
-                        id="comment"></textarea>
+                        id="comment">{{#if userRating}}{{userRating.comment}}{{/if}}</textarea>
                 </div>
 
                 <button id="saveRating" type="submit" class="btn btn-dark btn-block">Save</button>

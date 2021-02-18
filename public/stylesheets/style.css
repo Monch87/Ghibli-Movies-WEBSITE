@@ -110,13 +110,16 @@ a {
   color: whitesmoke; }
 
 .avatar-profile {
-  font-size: 1.5em;
-  align-items: center;
+  font-size: 1.5em; }
+
+.profile-card {
+  background-color: #f2fdfe;
   padding: 20px;
-  text-align: center;
-  margin-left: 50px;
-  width: 100%;
-  height: 100%; }
+  border-radius: 8px; }
+  .profile-card.profile-height {
+    height: 520px; }
+  .profile-card .card-title {
+    height: 70px; }
 
 .avatar-design {
   background-color: white;
@@ -142,5 +145,9 @@ a {
   list-style: none;
   display: block;
   margin: 15px; }
+
+.glide__arrow {
+  background-color: #8cd4d4;
+  top: 40px; }
 
 /*# sourceMappingURL=style.css.map */

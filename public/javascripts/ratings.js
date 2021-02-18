@@ -6,10 +6,13 @@ $(function () {
 });
 
 $("#rateYo").rateYo({
-  rating: 0,
+  rating: document.querySelector("#rateYo")
+    ? document.querySelector("#rateYo").getAttribute("rate")
+    : 0,
   halfStar: true
 });
 
+// Get numerical value from all ratings and turn into stars value
 const allRates = document.querySelectorAll(".stars");
 allRates.forEach((rateElement) => {
   const rate = rateElement.getAttribute("rate");

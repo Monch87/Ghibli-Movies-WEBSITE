@@ -21,7 +21,7 @@
             <form method="POST" action="/search/movie/{{data.id}}/review">
                 <div class="form-group">
                     <label for="rating">Rating:</label>
-                    <div id="rateYo"></div>
+                    <div id="rateYo" {{#if userRating}}rate={{userRating.rating}}{{/if}}></div>
                     <input name="rating" type="hidden" class="form-control" id="rating">
                 </div>
 

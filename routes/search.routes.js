@@ -8,6 +8,8 @@ const User = require("../models/user.model");
 const router = express.Router();
 
 // Endpoints
+
+// Movie details
 router.get("/movie/:id", async (req, res, next) => {
   const authenticated = req.isAuthenticated();
   const userID = authenticated ? req.session.passport.user : null;

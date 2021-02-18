@@ -10,38 +10,47 @@
         </div>
         <div class="col-md-7 mb-3 movies-avatar">
             <div class="row">
-                <div class="col">
+
+                <div class="col-6">
                     <h3>Pending movies</h3>
+                    {{#each pendingMovies}}
                     <div class="row">
-                        {{#each pendingMovies}}
                         <a href="/search/movie/{{this.api_id}}" class="text-decoration-none">
-                            <div class="row">
-                                <div class="col-4 mt-4"><img src="{{this.image}}" alt="{{this.title}}">
-                                    <p>{{this.title}}</p>
-                                </div>
+                            <div class="col-8 mt-4"><img src="{{this.image}}" alt="{{this.title}}">
+                                <p>{{this.title}}</p>
                             </div>
                         </a>
                     </div>
-                    {{#unless @last}}
-                    <hr>{{/unless}}
+                    <div class="row">
+                        <div class="col">
+                            <a href="/profile/delete-pending-movie?id={{this.id}}"
+                                class="btn btn-sm btn-dark">Remove</a>
+                        </div>
+                    </div>
                     {{/each}}
                 </div>
-            </div>
-            <div class="row">
-                <div class="col">
+
+                <div class="col-6">
                     <h3>Watched movies</h3>
-                    <div class="row"></div>
                     {{#each watchedMovies}}
-                    <a href="/search/movie/{{this.api_id}}" class="text-decoration-none">
-                        <div class="row">
-                            <div class="col mt-4">
+                    <div class="row">
+                        <a href="/search/movie/{{this.api_id}}" class="text-decoration-none">
+                            <div class="col-8 mt-4">
                                 <img src="{{this.image}}" alt="{{this.title}}">
                                 <p>{{this.title}}</p>
                             </div>
+
+                        </a>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <a href="/profile/delete-watched-movie?id={{this.id}}"
+                                class="btn btn-sm btn-dark">Remove</a>
                         </div>
-                    </a>
+                    </div>
                     {{/each}}
                 </div>
+
             </div>
         </div>
 

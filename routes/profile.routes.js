@@ -9,6 +9,7 @@ const cdnUpload = require("../configs/cloudinary.config")
 
 const { checkLoggedIn } = require("./../middleware")
 
+// Display user profile
 router.get("/", checkLoggedIn, async (req, res, next) => {
   const userID = req.session.passport.user
   const GhibliApi = new apiHandler()
@@ -22,14 +23,14 @@ router.get("/", checkLoggedIn, async (req, res, next) => {
       user.watchedMovies.map(async movie => {
         const response = await GhibliApi.getFilmById(movie.api_id)
         const title = response.data.title
-        return { api_id: movie.api_id, image: movie.image, title }
+        return { id: movie.id, api_id: movie.api_id, image: movie.image, title }
       })
     )
     const pendingMovies = await Promise.all(
       user.pendingMovies.map(async movie => {
         const response = await GhibliApi.getFilmById(movie.api_id)
         const title = response.data.title
-        return { api_id: movie.api_id, image: movie.image, title }
+        return { id: movie.id, api_id: movie.api_id, image: movie.image, title }
       })
     )
     res.render("pages/profile/profile", { user, pendingMovies, watchedMovies })
@@ -38,7 +39,7 @@ router.get("/", checkLoggedIn, async (req, res, next) => {
   }
 })
 
-// User edit
+// Edit user data
 router.get("/:user_id/edit", (req, res, next) => {
   const user_id = req.params.user_id
 
@@ -59,9 +60,36 @@ router.post(
     if (req.file) newUser.avatar = req.file.path
 
     User.findByIdAndUpdate(user_id, newUser, { omitUndefined: true, new: true })
-      .then(user => res.redirect("/profile"))
+      .then(() => res.redirect("/profile"))
       .catch(err => next(err))
   }
 )
 
+// Remove user movies
+
+router.get("/delete-pending-movie", checkLoggedIn, async (req, res, next) => {
+  const userID = req.session.passport.user
+  try {
+    const user = await User.findById(userID).select("pendingMovies")
+    await User.findByIdAndUpdate(userID, {
+      pendingMovies: user.pendingMovies.filter(movie => movie != req.query.id),
+    })
+    res.redirect("/profile")
+  } catch (err) {
+    next(err)
+  }
+})
+
+router.get("/delete-watched-movie", checkLoggedIn, async (req, res, next) => {
+  const userID = req.session.passport.user
+  try {
+    const user = await User.findById(userID).select("watchedMovies")
+    await User.findByIdAndUpdate(userID, {
+      watchedMovies: user.watchedMovies.filter(movie => movie != req.query.id),
+    })
+    res.redirect("/profile")
+  } catch (err) {
+    next(err)
+  }
+})
 module.exports = router

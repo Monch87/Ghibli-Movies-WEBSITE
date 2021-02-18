@@ -2,7 +2,7 @@
     <div class="row justify-content-between">
 
 
-        <div class="col-3 text-center">
+        <div class="col-2 text-center">
             <div class="profile-card profile-height d-flex justify-content-center align-items-center">
                 <div class="my-auto">
 
@@ -16,7 +16,7 @@
             </div>
         </div>
 
-        <div class="col-9 text-center avatar-profile">
+        <div class="col-5 text-center avatar-profile">
 
             {{#if pendingMovies}}
 
@@ -49,8 +49,8 @@
 
             </div>
             {{/if}}
-
-            <hr>
+        </div>
+        <div class="col-5 text-center avatar-profile">
             {{#if watchedMovies}}
 
             <div class="glide profile-card profile-height">
@@ -89,7 +89,7 @@
         new Glide('.glide', {
             type: 'carousel',
             focusAt: 'center',
-            perView: 4,
+            perView: 3,
             gap: 5,
         }).mount()
     </script>

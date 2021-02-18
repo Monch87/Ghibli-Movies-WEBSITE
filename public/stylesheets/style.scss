@@ -27,6 +27,7 @@ a {
 }
 .navbar {
   margin-bottom: 50px;
+  height: 100px;
 }
 
 .navbar-brand img {
@@ -141,10 +142,10 @@ a {
   padding: 20px;
   border-radius: 8px;
   &.profile-height {
-    height: 520px;
+    height: 560px;
   }
   .card-title {
-    height: 70px;
+    height: 100px;
   }
 }
 .avatar-design {

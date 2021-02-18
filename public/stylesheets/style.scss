@@ -16,6 +16,12 @@ h3 {
   font-weight: 200;
 }
 
+a {
+  text-decoration: none;
+  p {
+    color: black;
+  }
+}
 .navbar {
   margin-bottom: 50px;
 }
@@ -35,8 +41,15 @@ h3 {
 // }
 
 #movies-search-results {
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.7);
   border-radius: 0.35rem;
+  li {
+    background-color: transparent;
+    a {
+      text-decoration: none;
+      color: rgb(255, 149, 149);
+    }
+  }
 }
 
 #map {
@@ -96,15 +109,14 @@ h3 {
   margin: 100px;
   text-align: justify;
   padding: 140px;
-  color:whitesmoke;
-//     a {
-//     background-image: url(/images/dustbunny.png);
-// background-repeat:no-repeat;
-// height:100px;
-// width:100px;
-// background-position:center;
-//   }
-  
+  color: whitesmoke;
+  //     a {
+  //     background-image: url(/images/dustbunny.png);
+  // background-repeat:no-repeat;
+  // height:100px;
+  // width:100px;
+  // background-position:center;
+  //   }
 }
 
 // .btn-index{

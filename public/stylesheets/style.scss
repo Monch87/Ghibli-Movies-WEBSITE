@@ -148,7 +148,7 @@ a {
 
 .movies-avatar {
   text-align: center;
-  background-color: #d6bdbb;
+  // background-color: #d6bdbb;
   float: right;
   padding: 10px;
   img {
@@ -161,4 +161,33 @@ a {
   margin-bottom: 40px;
   padding: 20px;
   border-radius: 5px;
+}
+
+
+
+////////////////////////////////////////////// MOVIES DESIGN
+
+.glide__slide{
+  list-style: none;
+}
+
+.gallery-grid figure {
+  width: 80%;
+  display: block;
+  margin: 0 auto;
+}
+
+.gallery-grid img {
+  height: 200px;
+  object-fit: cover;
+}
+
+.gallery-grid figcaption {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.movies-carousel img{
+  height: 250px;
+  object-fit: cover;
 }

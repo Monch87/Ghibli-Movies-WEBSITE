@@ -52,6 +52,10 @@ a {
   margin-bottom: 50px;
   height: 100px; }
 
+.navbar-collapse.collapse.show {
+  background-color: rgba(217, 139, 134, 0.8);
+  height: 250px; }
+
 .navbar-brand img {
   width: 140px;
   display: flex;
@@ -105,9 +109,6 @@ a {
     transform: translateY(calc(100% + 20px)); } }
 
 .container-index {
-  margin: 100px;
-  text-align: justify;
-  padding: 140px;
   color: whitesmoke; }
 
 .avatar-profile {
@@ -132,6 +133,10 @@ a {
   border: 2px solid #8cd4d4;
   max-width: 100%;
   height: auto; }
+
+.autocomplete-list {
+  position: fixed;
+  width: 370px; }
 
 .movies-avatar {
   text-align: center;

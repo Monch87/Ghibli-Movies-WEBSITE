@@ -3,7 +3,7 @@
 
 $color-white: rgba(245, 242, 242, 0.6);
 $color-avatar-aqua: rgb(140, 212, 212);
-
+$color-pink: rgba(217, 139, 134, 0.8);
 body {
   background-image: url(../images/webpage.jpg);
   background-position: center center;
@@ -30,6 +30,10 @@ a {
   height: 100px;
 }
 
+.navbar-collapse.collapse.show {
+  background-color: $color-pink;
+  height: 250px;
+}
 .navbar-brand img {
   width: 140px;
   display: flex;
@@ -101,9 +105,6 @@ a {
 }
 
 .container-index {
-  margin: 100px;
-  text-align: justify;
-  padding: 140px;
   color: whitesmoke;
 }
 
